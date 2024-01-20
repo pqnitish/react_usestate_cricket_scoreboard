@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boilerplate Code</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Code goes here
+
+    function CricketScoreboard() {
+      const [runs, setRuns] = React.useState(0);
+      const [wickets, setWickets] = React.useState(0);
+      function addScores(value) {
+        if (wickets < 10) {
+          setRuns(runs + value);
+        }
+      }
+      function updateWickets() {
+        if (wickets < 10) {
+          setWickets(wickets + 1);
+        }
+      }
+      return (
+        <div className="container">
+          <p>Runs:{runs}</p>
+          <p>Wickets:{wickets}</p>
+          <button onClick={() => addScores(4)} className="btn">Increase runs by 4</button>
+          <button onClick={() => addScores(8)} className="btn">Increase runs by 8</button>
+          <button onClick={() => addScores(3)} className="btn">Increase runs by 3</button>
+          <br/><br/>
+          <button onClick={updateWickets} className="btn btn2">Update Wicket</button>
+        </div>
+      );
+    }
+    let root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<CricketScoreboard />);
+  </script>
+</html>
